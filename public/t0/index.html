@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 0</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.css"
+    />
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Compose email</h1>
+
+      <h2>Subject</h2>
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="subject-input"
+          placeholder="Email subject"
+          aria-label="Email subject"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          id="suggest-button"
+        >
+          Suggest
+        </button>
+      </div>
+
+      <h2>Body</h2>
+      <textarea class="form-control" rows="5" id="body-input"></textarea>
+    </div>
+
+    <script>
+      const suggestButton = document.getElementById("suggest-button");
+
+      suggestButton.addEventListener("click", async () => {
+        const emailBody = document.querySelector("textarea").value;
+
+        // YOUR CODE HERE
+
+        // document.getElementById("subject-input").value = ???
+      });
+    </script>
+  </body>
+</html>

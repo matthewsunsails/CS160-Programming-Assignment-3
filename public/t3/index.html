@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 3</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.css"
+    />
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+    <style>
+      section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1rem;
+        grid-auto-rows: 12rem;
+      }
+
+      section img {
+        /* cover */
+        width: 100%;
+        height: 100%;
+        /* height same as width: */
+        object-fit: cover;
+
+        border-radius: 0.3rem;
+        box-shadow: 0 0 1rem -0.5rem rgba(0, 0, 0, 0.8);
+      }
+
+      section {
+        margin-bottom: 2rem;
+      }
+
+      .upload-form {
+        margin-bottom: 2rem;
+
+        & form {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>Holiday pics</h1>
+      </header>
+
+      <div class="upload-form">
+        <form>
+          <input type="file" name="file" class="form-control" />
+          <input type="submit" value="Add" class="btn btn-primary" />
+        </form>
+      </div>
+
+      <!-- YOUR CODE HERE: Edit these headers to use the names of the holidays you've chosen. -->
+      <h2>Holiday 1</h2>
+      <section id="holiday-1"></section>
+
+      <h2>Holiday 2</h2>
+      <section id="holiday-2"></section>
+
+      <h2>Holiday 3</h2>
+      <section id="holiday-3"></section>
+
+      <h2>Uncategorized</h2>
+      <section id="uncategorized"></section>
+    </div>
+
+    <script>
+      const addToGallery = (src, sectionId) => {
+        const img = document.createElement("img");
+        img.src = src;
+
+        const section = document.getElementById(sectionId);
+
+        section.appendChild(img);
+      };
+
+      document
+        .querySelector("form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const file = document.querySelector('input[type="file"]').files[0];
+          const fileReader = new FileReader();
+          fileReader.onload = async (readEvent) => {
+            const dataUrl = readEvent.target.result;
+
+            // YOUR CODE HERE
+            addToGallery(dataUrl, "uncategorized");
+          };
+
+          fileReader.readAsDataURL(file);
+        });
+
+      // Some example images:
+      // We've chosen Valentine's day-themed images for this example, but you can swap them out or remove them if you choose another holiday!
+      // Likewise for the other holidays.
+      addToGallery("/images/izumi-jS4UNRCMqUk-unsplash.jpg", "holiday-1");
+      addToGallery("/images/laura-ockel-zAOBpEE_vV4-unsplash.jpg", "holiday-1");
+      addToGallery("/images/brooke-lark-pXEsx3kRuNc-unsplash.jpg", "holiday-1");
+
+      // Arbor Day
+      addToGallery(
+        "/images/andrew-shelley-Hzbq4de24kQ-unsplash.jpg",
+        "holiday-2"
+      );
+      addToGallery(
+        "/images/vitor-monthay-EkEdHarUPTs-unsplash.jpg",
+        "holiday-2"
+      );
+
+      // Halloween
+      addToGallery(
+        "/images/erica-marsland-huynh-DLxOLOQPNAc-unsplash.jpg",
+        "holiday-3"
+      );
+      addToGallery(
+        "/images/sabina-music-rich-OJy0JHnoUZQ-unsplash.jpg",
+        "holiday-3"
+      );
+      addToGallery("/images/eric-deeran-L2CPP72_uUg-unsplash.jpg", "holiday-3");
+      addToGallery("/images/simom-caban-ZKrEJMhEsr8-unsplash.jpg", "holiday-3");
+
+      // Uncategorized
+      addToGallery(
+        "/images/ray-hennessy-gdTxVSAE5sk-unsplash.jpg",
+        "uncategorized"
+      );
+    </script>
+  </body>
+</html>

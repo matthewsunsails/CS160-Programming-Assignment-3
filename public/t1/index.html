@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 1</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.css"
+    />
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+    <style>
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .home.hidden,
+      .btn.hidden {
+        display: none;
+      }
+
+      .planet-blurb {
+        background-color: white;
+        padding: 2rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 4rem;
+        align-items: center;
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      .planet-image {
+        flex: 1;
+      }
+
+      .planet-image img {
+        max-width: 100%;
+      }
+
+      .planet-info {
+        flex: 2;
+      }
+
+      .home img {
+        max-height: 220px;
+      }
+
+      .home .card {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>Planet finder</h1>
+        <button class="btn btn-secondary hidden" id="home-button">Back</button>
+      </header>
+
+      <div class="home" id="home-page">
+        <div class="query">
+          <form class="input-group mb-4" id="suggest-form">
+            <input
+              type="text"
+              class="form-control"
+              id="subject-input"
+              placeholder="What are you looking for?"
+              aria-label="What are you looking for?"
+            />
+            <button
+              class="btn btn-outline-primary"
+              type="submit"
+              id="suggest-button"
+            >
+              Help me choose
+            </button>
+          </form>
+        </div>
+
+        <div class="card mb-3" role="button" id="alekhine-button">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/images/alekhine.png"
+                class="img-fluid rounded-start"
+                alt="A depiction of the planet Alekhine, produced by SXDL 1.0"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title">Alekhine</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3" role="button" id="janon-button">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/images/janon.png"
+                class="img-fluid rounded-start"
+                alt="A depiction of the planet Janon, produced by SXDL 1.0"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title">Janon</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3" role="button" id="guilin-button">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/images/guilin.png"
+                class="img-fluid rounded-start"
+                alt="A depiction of the planet Guilin, produced by SXDL 1.0"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title">Guilin</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3" role="button" id="jayne-button">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/images/jayne.png"
+                class="img-fluid rounded-start"
+                alt="A depiction of the planet Jayne, produced by SXDL 1.0"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title">Jayne</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Below are the "sub-pages", hidden for now but revealed when the cards are clicked -->
+
+      <div class="hidden planet-blurb" id="alekhine-blurb">
+        <div class="planet-image">
+          <img
+            src="/images/alekhine.png"
+            alt="A depiction of the planet Alekhine, produced by SXDL 1.0"
+          />
+        </div>
+        <div class="planet-info">
+          <h2>Alekhine</h2>
+
+          <p>
+            Continents — or, more precisely, islands — on the largely aquatic
+            planet of Alekhine are in a perpetual state of rotational drift.
+            Though the largest islands rotate only a few degrees per year, small
+            islands are known to spin freely, some completing a single
+            revolution in just a few hours.
+          </p>
+
+          <p>
+            A tradition of intellectual curiosity goes back on this planet as
+            far as human settlers do, in large part due to an early demand to
+            bring clever problem-solvers in as settlers. How do you plan a city
+            across an archipelago of individually-rotating islands? How can you
+            maintain utility lines and train tracks? Only by enticing the best
+            city planners, engineers, and even graph theorists did local
+            governments get a hold on the complexity.
+          </p>
+
+          <p>
+            Now that the basic issues are largely ironed out, the residents of
+            Alekhine have found other ways to spend their time. Tall buildings,
+            many painted a creamy white, host some of the galaxy’s most
+            prestigious academic institutions. Some residents have taken to
+            designing island-scale puzzles for visitors, requiring participants
+            to summon their ingenuity to unpack the complexities of the ground
+            rotating under their feet.
+          </p>
+
+          <p>
+            Others choose a simpler life, riding the uniquely-circular waves on
+            custom surfboards or tending to extravagant gardens that don’t
+            require plants to be manually rotated. On Alekhine, humans have
+            conquered the strange dynamic geology to their own benefit.
+          </p>
+        </div>
+      </div>
+
+      <div class="hidden planet-blurb" id="janon-blurb">
+        <div class="planet-image">
+          <img
+            src="/images/janon.png"
+            alt="A depiction of the planet Janon, produced by SXDL 1.0"
+          />
+        </div>
+        <div class="planet-info">
+          <h2>Janon</h2>
+
+          <p>
+            The planet Janon is filled to the brim with nature, both oddly
+            familiar and completely bewildering to natives of Earth. Equalizing
+            wind currents leave most of the planet at an equally tropical
+            temperature, lush with fractal tree-like plants, dotted with
+            reservoirs of mostly-fresh water, and populated with beasts both
+            mighty and meek. Compared to organisms on Earth, animals tend to be
+            less astute (and none is nearly as intelligent as Earth’s primates
+            are), but plants seem to flourish in coordinated patterns, leaving
+            some to believe that they possess some limited intelligence of their
+            own.
+          </p>
+
+          <p>
+            Human outposts are hard to come by, since building them involves
+            cutting through dense jungle in most parts of the world. Those
+            settlements that do exist tend to be densely populated, with
+            tightly-packed tall buildings that look over canopies of trees off
+            in the distance.
+          </p>
+          <p>
+            Janon is known for its exquisite cuisine, a trait unfortunately not
+            coincidental with its rich wildlife; animals’ naturally-evolved
+            instincts on the planet are no match for the skills of even a
+            rudimentary hunter. Already some of the most delectable species on
+            the planet are considered endangered, just a few generations after
+            humanity systematically catalogued which meats were safe to eat,
+            which were toxic, and which seem to just give you the runs.
+          </p>
+          <p>
+            The crown jewel of Janon is Valoret, a city built in a rare clearing
+            occupying around a hundred thousand acres. Local cuisine from around
+            the planet is imported into the city, kept fresh only by the
+            efficiency of a one-of-a-kind aerial logistics system that is held
+            aloft by the globe’s natural wind currents. Beyond the clearing,
+            suburbs expand outwards into the surrounding rainforest, connected
+            by an underground transportation system that keeps the aboveground
+            biosphere largely untouched.
+          </p>
+        </div>
+      </div>
+
+      <div class="hidden planet-blurb" id="guilin-blurb">
+        <div class="planet-image">
+          <img
+            src="/images/guilin.png"
+            alt="A depiction of the planet Guilin, produced by SXDL 1.0"
+          />
+        </div>
+        <div class="planet-info">
+          <h2>Guilin</h2>
+
+          <p>
+            Owing to its regular seismic activity, the planet Guilin is a haven
+            for those who enjoy hot springs and impressive geyser displays.
+            Downward erosion caused by fast-moving water has crafted tall stone
+            towers in many regions on the planet, not unlike the world’s
+            namesake back on Earth.
+          </p>
+
+          <p>
+            The largest springs have been commercialized in resorts not unlike
+            water parks, and sizable cities analogous to Earth’s beach towns
+            have sprung up in support of these resorts. Those looking for a
+            quieter place to appreciate the scenery will find no shortage of
+            more private springs, especially far from the more densely-populated
+            areas.
+          </p>
+
+          <p>
+            The natural spires of Guilin have been a foundation for
+            thrill-seeking activities like bungee jumping and rock climbing, but
+            they also serve as serene outlooks for the beautiful vistas of the
+            planet’s features, especially where elevators have been carved into
+            the side of the stone for easier access to the summits.
+          </p>
+
+          <p>
+            Guilin’s natural features aren’t limited to just spires and hot
+            springs. It doesn’t take much travel to explore a myriad of
+            geographic wonders far surpassing anything Earth has to offer. The
+            planet’s public transit is limited, however, since the difficult
+            terrain limits what kinds of infrastructure can be built. Bring your
+            own hovercraft!
+          </p>
+        </div>
+      </div>
+
+      <div class="hidden planet-blurb" id="jayne-blurb">
+        <div class="planet-image">
+          <img
+            src="/images/jayne.png"
+            alt="A depiction of the planet Jayne, produced by SXDL 1.0"
+          />
+        </div>
+        <div class="planet-info">
+          <h2>Jayne</h2>
+
+          <p>
+            The planet Jayne, despite its hot weather and limited access to
+            drinking water, is a monument to manual handiwork and a marvel of
+            modern sculpture. Every historical figure, even those of middling
+            significance, is personally commemorated by a life-sized statue. No
+            one knows how many statues are present on the planet, but current
+            estimates suggest that Jayne’s largest city adds dozens to the count
+            every day. There are figures here enshrined in stone who don’t even
+            meet the notability requirements of Galactic Wikipedia.
+          </p>
+          <p>
+            For reasons that are fuzzy even to the most dedicated historians,
+            Jayne’s cities have universally adopted a policy of redistributing
+            wealth through a monthly ceremony during which golden coins are
+            dropped from the sky by aerial vehicles. Some question the
+            distribution mechanism, but no one is willing to reform the system
+            if it means breaking tradition.
+          </p>
+          <p>
+            If you happen to be present during a distribution, even as a
+            tourist, you’re welcome to take what you can grab! Some
+            penny-pinching visitors have been known to break even on their
+            visits to the planet.
+          </p>
+          <p>
+            Traditionally, the exact timing of the monthly money-drop comes as a
+            surprise to residents. When the gold is dropped during just the
+            right twilight, some say, not without a hint of nostalgia, that the
+            tumbling coins off in the distance twinkle like fireflies.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const blurbElements = {
+        Alekhine: document.getElementById("alekhine-blurb"),
+        Janon: document.getElementById("janon-blurb"),
+        Guilin: document.getElementById("guilin-blurb"),
+        Jayne: document.getElementById("jayne-blurb"),
+      };
+
+      const navigateHome = () => {
+        for (const blurbElement of Object.values(blurbElements)) {
+          blurbElement.classList.add("hidden");
+        }
+
+        document.getElementById("home-page").classList.remove("hidden");
+        document.getElementById("home-button").classList.add("hidden");
+      };
+
+      document.getElementById("home-button").addEventListener("click", () => {
+        navigateHome();
+      });
+
+      // You can use this function to naviate to one of the four planet subpages.
+      const navigateToBlurb = (planetName) => {
+        if (!blurbElements[planetName]) {
+          throw new Error(`No blurb found for planet ${planetName}`);
+        }
+
+        for (const [name, blurbElement] of Object.entries(blurbElements)) {
+          if (name === planetName) {
+            blurbElement.classList.remove("hidden");
+          } else {
+            blurbElement.classList.add("hidden");
+          }
+        }
+
+        document.getElementById("home-page").classList.add("hidden");
+        document.getElementById("home-button").classList.remove("hidden");
+      };
+
+      document
+        .getElementById("alekhine-button")
+        .addEventListener("click", () => {
+          navigateToBlurb("Alekhine");
+        });
+
+      document.getElementById("janon-button").addEventListener("click", () => {
+        navigateToBlurb("Janon");
+      });
+
+      document.getElementById("guilin-button").addEventListener("click", () => {
+        navigateToBlurb("Guilin");
+      });
+
+      document.getElementById("jayne-button").addEventListener("click", () => {
+        navigateToBlurb("Jayne");
+      });
+
+      document
+        .getElementById("suggest-form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          // YOUR CODE HERE
+        });
+    </script>
+  </body>
+</html>

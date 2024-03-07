@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 2</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.css"
+    />
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+    <style>
+      .hidden {
+        display: none;
+      }
+
+      .card img {
+        max-height: 240px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>Shopping list</h1>
+      </header>
+
+      <div class="home" id="home-page">
+        <div class="query">
+          <form class="input-group mb-4" id="new-item-form">
+            <input
+              type="text"
+              class="form-control"
+              id="subject-input"
+              placeholder="What do you need to buy?"
+              aria-label="What do you need to buy?"
+            />
+            <button
+              class="btn btn-outline-primary"
+              type="submit"
+              id="suggest-button"
+            >
+              Add to list
+            </button>
+          </form>
+        </div>
+
+        <div id="list">
+          <!-- This is where we'll put the cards for each item. -->
+        </div>
+
+        <!-- This is where we've put the template for each card. The addShoppingListItem function below will create one. -->
+        <div class="hidden">
+          <div class="card mb-3" id="card-template">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img class="img-fluid rounded-start" data-template-id="image" />
+              </div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h2 class="card-title" data-template-id="title"></h2>
+                </div>
+              </div>
+              <div class="col-md-2 text-center">
+                <div class="card-body">
+                  <button
+                    class="btn btn-danger"
+                    data-template-id="delete-button"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // This function will add a new item to the shopping list.
+      function addShoppingListItem(title, image = undefined) {
+        // First, we need to clone the template.
+        const template = document.getElementById("card-template");
+        const clone = template.cloneNode(true);
+        clone.id = "";
+
+        // Then, we need to fill in the details.
+        const imageElement = clone.querySelector("[data-template-id=image]");
+        if (image !== undefined) {
+          imageElement.src = image;
+        }
+        imageElement.alt = `Image of ${title}`;
+        clone.querySelector("[data-template-id=title]").textContent = title;
+
+        // Then, we need to set up the event listener for the delete button.
+        const deleteButton = clone.querySelector(
+          "[data-template-id=delete-button]"
+        );
+        deleteButton.addEventListener("click", removeShoppingListItem);
+
+        // Finally, we need to add the new card to the list.
+        const list = document.getElementById("list");
+        list.appendChild(clone);
+
+        return clone;
+      }
+
+      // This function will remove an item from the shopping list.
+      function removeShoppingListItem(event) {
+        const card = event.target.closest(".card");
+        card.remove();
+      }
+
+      // This function will handle the form submission.
+      async function handleFormSubmission(event) {
+        event.preventDefault();
+
+        // First, we need to get the value from the input.
+        const input = document.getElementById("subject-input");
+        const itemName = input.value;
+
+        // Then, we need to add the new item to the shopping list.
+        // YOUR CODE HERE: add an appropriate image to the new item.
+        addShoppingListItem(itemName);
+
+        // Finally, we need to clear the input.
+        input.value = "";
+      }
+
+      const form = document.getElementById("new-item-form");
+      form.addEventListener("submit", handleFormSubmission);
+
+      // We've added a couple items using pre-saved images just to get you started.
+      // When you add images, you'll want the image src to be a URL for your generated image rather than a local file.
+      addShoppingListItem(
+        "Bananas",
+        "/images/giorgio-trovato-fczCr7MdE7U-unsplash.512.jpg"
+      );
+
+      // You can also set the image URL after creating the element, if that works better for your design.
+      const card = addShoppingListItem("Tide pods");
+      card.querySelector("[data-template-id=image]").src =
+        "/images/erik-binggeser-LLpejDmK-ek-unsplash.512.jpg";
+    </script>
+  </body>
+</html>
